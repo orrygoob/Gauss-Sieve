@@ -89,3 +89,6 @@ Analysis has been done on how this algorithm performs with different dimensions,
 -------------
 
 - [ ] Add in plots of performance and vector quality along with descriptions
+- [ ] Implement sieve with 64 bit simhash as implemented by Ducas
+- [ ] Implement hash sieve using angular locality sensitive hashing as described by Laarhoven
+- [ ] Implement progressive sieving as described by Laarhoven
