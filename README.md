@@ -5,6 +5,7 @@
  * Prerequisites
  * Installation
  * Usage
+ * Branches
  * Performance Notes
  * To Do
 
@@ -69,6 +70,14 @@ For example the following command will run the program on "challenges/svp50LLL" 
 ```shell
  ./main -f challenges/svp50LLL.txt -l 10000 -s 100 -v
 ```
+
+## BRANCHES
+-------------
+
+In this repository there are different branches for slightly modified Gauss Sieves. They are listed below with descriptions.
+
+- main - The stable standard branch. Implements the Gauss Sieve exactly as Micciancio and Voulgaris' paper describes.
+- CombinedVectorDataBaseReduction - Combines the separate steps of reducing the vector and reducing the database into a single for loop. First the algorithm tries to reduce $v$ using the database vector $w$, if and only if $v$ has not been reduced it is then used to attempt to reduce $w$. Leads to reductions in the database occurring as soon as possible and results in less inner products being calculated.
 
 ## PERFORMANCE NOTES
 -------------
