@@ -14,7 +14,7 @@
 
 Author: Orry Gooberman
 
-This project is a C++ implementation of the Gaussian Sieve originally proposed by Daniele Micciancio and Panagiotis Voulgaris in their paper "Faster Exponential Time Algorithms for the Shortest Vector Problem". It finds an approximation for the shortest vector in a given integer lattice. This implementation is a heavily modified version of Voulgaris' 2011 algorithm and has been updated to use current linear algebra libraries (CBLAS) instead of the depreciated NTL 5.0 (As a result program no longer supports arbitary length integers and using double precision floats for most calculations). The aim of this simple single-threaded algorithm is to provide a simple and readable example that can be built on top of.
+This project is a C++ implementation of the Gaussian Sieve originally proposed by Daniele Micciancio and Panagiotis Voulgaris in their paper "Faster Exponential Time Algorithms for the Shortest Vector Problem". It finds an approximation for the shortest vector in a given integer lattice. This implementation is a heavily modified version of Voulgaris' 2011 algorithm and has been updated to use current linear algebra libraries (CBLAS) instead of the depreciated NTL 5.0 (As a result program no longer supports arbitary length integers and uses double precision floats for most calculations). The aim of this simple single-threaded algorithm is to provide a simple and readable example that can be built on top of.
 
 
 ## PREREQUISITES
@@ -82,13 +82,36 @@ In this repository there are different folders for slightly modified Gauss Sieve
 ## PERFORMANCE NOTES
 -------------
 
-Analysis has been done on how this algorithm performs with different dimensions, available memory, and collisions before execution is stopped.
+Analysis has been done on how this algorithm performs with different dimensions, available memory, and collisions before execution is stopped. The data for this analysis was all taken from a the simple Gauss Sieve implementation.
 
+### Short Vector Quality
+![Lattice Challenge Comparison](graphs/norm%20of%20only%20seed%200.png)
+
+This compares the results of this SVP solver with the historical hall of fame records from latticechallenge.org. Proves that this solver is at least as good as all previous records for seed 0. (Records for other seeds were discounted as users have searched for better lattices with shorter vectors by using different seeds).
+
+-------------
+### Run Time
+![Logarithmic Run Time](graphs/runTimeLogarithmic.png)
+
+This is a plot of the logarithmic run time vs lattice dimension and clearly shows that the run time of the program is exponentially tied to the dimension of the lattice.
+
+-------------
+### Collision Limit
+![Collision Limit vs Short Vector Quality](graphs/Linear%20Normalised%20Norm%20Collision%20Limit%20Heatmap.png)
+![Collision Limit vs Run Time](graphs/Linear%20Run%20Time%20Collision%20Count%20Heatmap.png)
+
+As you can see, changing the collision limit does not affect the run time of the program, only the quality of the output vector.
+
+-------------
+### Maximum Number of Vectors
+![Vector Limit vs Short Vector Quality](graphs/Linear%20Norm%20Vector%20Limit%20Heatmap.png)
+![Vector Limit vs Run Time](graphs/Log%20Run%20Time%20Vector%20Limit%20Heatmap.png)
+
+As you can see, changing the collision limit only affects the run time of the program (especially when very small) and not the quality of the output vector. Additionally you can also see that there is no apparent downside to allowing many more vectors to be stored than strictly necessary.
 
 ## TO DO
 -------------
 
-- [ ] Add in plots of performance and vector quality along with descriptions
 - [ ] Add tidy implementation of sieve with 64 bit simhash as implemented by Ducas
 - [ ] Add tidy implementation of hash sieve using angular locality sensitive hashing as described by Laarhoven
 - [ ] Add tidy implementation of progressive sieving as described by Laarhoven
