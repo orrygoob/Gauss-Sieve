@@ -112,6 +112,7 @@ As you can see, changing the collision limit only affects the run time of the pr
 ## TO DO
 -------------
 
-- [ ] Add tidy implementation of sieve with 64 bit simhash as implemented by Ducas
-- [ ] Add tidy implementation of hash sieve using angular locality sensitive hashing as described by Laarhoven
-- [ ] Add tidy implementation of progressive sieving as described by Laarhoven
+- [ ] Add implementation of sieve with 64 bit simhash as implemented by Ducas
+- [ ] Add implementation of hash sieve using angular locality sensitive hashing as described by Laarhoven
+- [ ] Add implementation of progressive sieving as described by Laarhoven
+- [ ] Add implementation of sieving by averages
